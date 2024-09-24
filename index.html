@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CompanyZer0 - Coming Soon. Website under construction.">
+    <meta name="keywords" content="CompanyZer0, Coming Soon, Pixelbyte Virtual, Pixelbyte Esports, Company Management, Web Development, Digital Marketing, Esports, Technology, Startup">
+    <meta name="author" content="CompanyZer0">
+    <title>CompanyZer0 - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            background-size: 400% 400%;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            animation: gradient 10s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Responsive Rotating Border with Color Transition */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 10px;
+            background: linear-gradient(90deg, blue, yellow, lime, green);
+            background-size: 400% 400%;
+            z-index: 0;
+            animation: borderTransition 5s ease infinite;
+        }
+
+        @keyframes borderTransition {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        nav {
+            background-color: #262626;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        h1 {
+            color: white;
+            font-size: 28px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="email"] {
+            padding: 12px 20px;
+            border: none;
+            outline: none;
+            background-color: #333;
+            color: white;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 320px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="email"]:focus {
+            background-color: #444;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #444;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 120px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Spinner and animation */
+        .spinner {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .circle {
+            width: 100%;
+            height: 100%;
+            border: 5px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .checkmark, .cross {
+            font-size: 40px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: white;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .fade-in {
+            opacity: 1;
+            transition: opacity 0.8s ease-in;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 24px;
+            }
+
+            input[type="email"],
+            button {
+                width: 90%;
+            }
+
+            .logo {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>CompanyZer0</h1>
+    </nav>
+
+    <main>
+        <div class="container">
+            <img src="logo.png" alt="CompanyZer0 Logo" class="logo">
+            <h2>We are coming soon!</h2>
+            <p>Our website is currently under construction. Stay tuned!</p>
+            
+            <form id="email-form">
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <button type="submit" id="send-button">Send</button>
+            </form>
+
+            <div class="spinner" id="spinner">
+                <div class="circle"></div>
+                <div class="checkmark hide" id="checkmark">&#10003;</div>
+                <div class="cross hide" id="cross">&#10007;</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+    <script>
+        // Your Firebase config
+        const firebaseConfig = {
+  apiKey: "AIzaSyDfpGVvPrsDNSa1lQHZWLLWo4bG7UygW08",
+  authDomain: "money-saver-74340.firebaseapp.com",
+  projectId: "money-saver-74340",
+  storageBucket: "money-saver-74340.appspot.com",
+  messagingSenderId: "834383455701",
+  appId: "1:834383455701:web:35066b8a177e54865c495c"
+};ht
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+
+        document.getElementById('email-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+
+            if (email === "") return;
+
+            const spinner = document.getElementById('spinner');
+            const circle = document.querySelector('.circle');
+            const checkmark = document.getElementById('checkmark');
+            const cross = document.getElementById('cross');
+
+            // Show spinner only after form submission
+            spinner.style.display = 'block';
+            circle.classList.remove('hide');
+            checkmark.classList.add('hide');
+            cross.classList.add('hide');
+
+            try {
+                // Add email to Firebase Firestore collection
+                await db.collection('emails').add({
+                    email: email,
+                    timestamp: new Date()
+                });
+
+                // Success animation
+                setTimeout(() => {
+                    circle.classList.add('hide');
+                    checkmark.classList.remove('hide');
+                }, 1000);
+
+                // Clear form and hide everything except the navbar
+                document.getElementById('email-form').classList.add('fade-out');
+                setTimeout(() => {
+                    document.getElementById('email-form').style.display = 'none';
+                }, 800);
+
+            } catch (error) {
+                // Error animation
+                setTimeout(() => {
+                    circle.classList.add('hide');
+                    cross.classList.remove('hide');
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
