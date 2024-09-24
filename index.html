@@ -113,6 +113,29 @@
             margin-bottom: 20px;
         }
 
+        /* Black box container */
+        .black-box {
+            background-color: #000;
+            border-left: 2px solid transparent;
+            position: relative;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Create the gradient border effect */
+        .black-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -2px; /* Adjust for left border */
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(90deg, blue, yellow, lime, green);
+            animation: borderTransition 5s ease infinite;
+            z-index: -1;
+        }
+
         form {
             margin-bottom: 20px;
         }
@@ -228,38 +251,24 @@
             <img src="logo.png" alt="CompanyZer0 Logo" class="logo">
             <h2>We are coming soon!</h2>
             <p>Our website is currently under construction. Stay tuned!</p>
-            
-            <form id="email-form">
-                <input type="email" id="email" placeholder="Enter your email" required>
-                <button type="submit" id="send-button">Send</button>
-            </form>
 
-            <div class="spinner" id="spinner">
-                <div class="circle"></div>
-                <div class="checkmark hide" id="checkmark">&#10003;</div>
-                <div class="cross hide" id="cross">&#10007;</div>
+            <div class="black-box">
+                <form id="email-form">
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <button type="submit" id="send-button">Send</button>
+                </form>
+
+                <div class="spinner" id="spinner">
+                    <div class="circle"></div>
+                    <div class="checkmark hide" id="checkmark">&#10003;</div>
+                    <div class="cross hide" id="cross">&#10007;</div>
+                </div>
             </div>
         </div>
     </main>
 
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
     <script>
-        // Your Firebase config
-        const firebaseConfig = {
-  apiKey: "AIzaSyDfpGVvPrsDNSa1lQHZWLLWo4bG7UygW08",
-  authDomain: "money-saver-74340.firebaseapp.com",
-  projectId: "money-saver-74340",
-  storageBucket: "money-saver-74340.appspot.com",
-  messagingSenderId: "834383455701",
-  appId: "1:834383455701:web:35066b8a177e54865c495c"
-};ht
-
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore(app);
-
-        document.getElementById('email-form').addEventListener('submit', async (e) => {
+        document.getElementById('email-form').addEventListener('submit', (e) => {
             e.preventDefault();
 
             const emailInput = document.getElementById('email');
@@ -278,32 +287,28 @@
             checkmark.classList.add('hide');
             cross.classList.add('hide');
 
-            try {
-                // Add email to Firebase Firestore collection
-                await db.collection('emails').add({
-                    email: email,
-                    timestamp: new Date()
-                });
+            // Simulate form submission process
+            setTimeout(() => {
+                // Simulate success
+                const success = true; // Change this to false to simulate an error
 
-                // Success animation
-                setTimeout(() => {
+                if (success) {
+                    // Success animation
                     circle.classList.add('hide');
                     checkmark.classList.remove('hide');
-                }, 1000);
 
-                // Clear form and hide everything except the navbar
-                document.getElementById('email-form').classList.add('fade-out');
-                setTimeout(() => {
-                    document.getElementById('email-form').style.display = 'none';
-                }, 800);
-
-            } catch (error) {
-                // Error animation
-                setTimeout(() => {
+                    // Clear form and hide everything except the navbar
+                    emailInput.value = '';
+                    document.getElementById('email-form').classList.add('fade-out');
+                    setTimeout(() => {
+                        document.getElementById('email-form').style.display = 'none';
+                    }, 800);
+                } else {
+                    // Error animation
                     circle.classList.add('hide');
                     cross.classList.remove('hide');
-                }, 1000);
-            }
+                }
+            }, 2000); // Simulate a 2-second delay for form submission
         });
     </script>
 </body>
