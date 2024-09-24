@@ -16,8 +16,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
-            background-size: 400% 400%;
+            background-color: #2e2e2e; /* Dark grey background */
             color: white;
             height: 100vh;
             display: flex;
@@ -26,22 +25,10 @@
             align-items: center;
             overflow: hidden;
             position: relative;
-            animation: gradient 10s ease infinite;
+            z-index: 1;
         }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Responsive Rotating Border with Color Transition */
+        /* Gradient border behind everything */
         body::before {
             content: '';
             position: absolute;
@@ -49,10 +36,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            padding: 10px;
             background: linear-gradient(90deg, blue, yellow, lime, green);
             background-size: 400% 400%;
-            z-index: 0;
+            z-index: -1; /* Make sure it is behind all content */
             animation: borderTransition 5s ease infinite;
         }
 
@@ -76,7 +62,7 @@
             top: 0;
             padding: 15px 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            z-index: 1;
+            z-index: 2; /* Ensure it is above the gradient */
         }
 
         h1 {
@@ -115,12 +101,13 @@
 
         /* Black box container */
         .black-box {
-            background-color: #000;
-            border-left: 2px solid transparent;
+            background-color: #000; /* Black background for the box */
+            border-left: 2px solid transparent; /* Transparent left border */
             position: relative;
             padding: 20px;
             border-radius: 10px;
             overflow: hidden;
+            z-index: 1; /* Keep it above the gradient */
         }
 
         /* Create the gradient border effect */
@@ -133,7 +120,7 @@
             width: 2px;
             background: linear-gradient(90deg, blue, yellow, lime, green);
             animation: borderTransition 5s ease infinite;
-            z-index: -1;
+            z-index: -1; /* Keep it behind the box */
         }
 
         form {
