@@ -14,11 +14,14 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%; /* Ensure full height */
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             background-color: #2e2e2e; /* Dark grey background */
             color: white;
-            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -26,6 +29,8 @@
             overflow: hidden;
             position: relative;
             z-index: 1;
+            padding: 2px; /* Space for border */
+            background: #2e2e2e; /* Dark grey for the body */
         }
 
         /* Gradient border behind everything */
@@ -40,6 +45,7 @@
             background-size: 400% 400%;
             z-index: -1; /* Make sure it is behind all content */
             animation: borderTransition 5s ease infinite;
+            margin: -2px; /* Pull the gradient background to show as border */
         }
 
         @keyframes borderTransition {
@@ -240,8 +246,8 @@
             <p>Our website is currently under construction. Stay tuned!</p>
 
             <div class="black-box">
-                <form id="email-form">
-                    <input type="email" id="email" placeholder="Enter your email" required>
+                <form id="email-form" action="https://formsubmit.co/contact.companyzer0@gmail.com" method="POST">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
                     <button type="submit" id="send-button">Send</button>
                 </form>
 
